@@ -127,6 +127,15 @@ export const chuyenDiemApi = {
   delete: (id) => request(`/chuyen-diem/${id}`, { method: 'DELETE', headers: authHeaders() }),
 };
 
+// Users APIs (Dành cho Admin)
+export const usersApi = {
+  getAll: () => request('/users', { method: 'GET', headers: authHeaders() }),
+  getById: (id) => request(`/users/${id}`, { method: 'GET', headers: authHeaders() }),
+  create: (data) => request('/users', { method: 'POST', headers: authHeaders(), body: JSON.stringify(data) }),
+  update: (id, data) => request(`/users/${id}`, { method: 'PUT', headers: authHeaders(), body: JSON.stringify(data) }),
+  delete: (id) => request(`/users/${id}`, { method: 'DELETE', headers: authHeaders() }),
+};
+
 // Import APIs
 export const importApi = {
   sinhVien: async (file) => {

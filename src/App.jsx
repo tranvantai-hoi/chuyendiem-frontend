@@ -12,6 +12,8 @@ import SinhVien from './pages/CreditTransfer/SinhVien.jsx';
 import DotXet from './pages/CreditTransfer/DotXet.jsx';
 import ChuyenDiemDetail from './pages/CreditTransfer/ChuyenDiemDetail.jsx';
 import Import from './pages/CreditTransfer/Import.jsx';
+// Import Users nếu bạn đã tạo trang này (dành cho Admin)
+import Users from './pages/CreditTransfer/Users.jsx'; 
 
 const App = () => {
   return (
@@ -77,6 +79,18 @@ const App = () => {
             </CreditTransferLayout>
           )}
         />
+
+        {/* --- KHU VỰC SỬA LỖI --- */}
+        {/* Route 1: Vào trực tiếp để chọn đợt xét (không có ID) */}
+        <Route
+          path="/credit-transfer/chuyen-diem"
+          element={(
+            <CreditTransferLayout>
+              <ChuyenDiemDetail />
+            </CreditTransferLayout>
+          )}
+        />
+        {/* Route 2: Vào chi tiết một đợt xét cụ thể (có ID) */}
         <Route
           path="/credit-transfer/chuyen-diem/:dotXetId"
           element={(
@@ -85,6 +99,8 @@ const App = () => {
             </CreditTransferLayout>
           )}
         />
+        {/* ----------------------- */}
+
         <Route
           path="/credit-transfer/import"
           element={(
@@ -94,6 +110,16 @@ const App = () => {
           )}
         />
 
+        {/* Route cho Admin quản lý Users (nếu có) */}
+        <Route
+          path="/credit-transfer/users"
+          element={(
+            <CreditTransferLayout>
+              <Users />
+            </CreditTransferLayout>
+          )}
+        /> 
+
         {/* Mặc định chuyển về trang login chuyển điểm */}
         <Route path="*" element={<Navigate to="/credit-transfer/login" replace />} />
       </Routes>
@@ -102,5 +128,3 @@ const App = () => {
 };
 
 export default App;
-
-
